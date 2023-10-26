@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import AddTaskForm from './components/AddTaskForm';
+import Task from './components/Task';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [tasks, setTasks] = useState([
+        { id: '1', text: 'Оформить предзаказ Tekken 8' },
+        { id: '2', text: 'Дождаться выхода игры' },
+        { id: '3', text: 'Определиться с любимым персонажем' }
+    ]);
+    const [taskCount, setTaskCount] = useState(4);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const addTask = (text: string) => {
+        const newTask = { id: taskCount.toString(), text };
+        setTaskCount(taskCount + 1);
+        setTasks([...tasks, newTask]);
+    };
+
+    const deleteTask = (taskId: string) => {
+        const updatedTasks = tasks.filter((task) => task.id !== taskId);
+        const updatedTasksWithNumbers = updatedTasks.map((task, index) => ({
+            ...task,
+            id: (index + 1).toString(),
+        }));
+        setTasks(updatedTasksWithNumbers);
+    };
+
+    return (
+        <div className="App">
+            <h1>Todo List</h1>
+            <AddTaskForm onAddTask={addTask} />
+            {tasks.map((task) => (
+                <Task key={task.id} task={task} onDelete={deleteTask} />
+            ))}
+        </div>
+    );
 }
 
-export default App
+export default App;

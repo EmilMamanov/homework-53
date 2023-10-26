@@ -11,7 +11,7 @@ interface TaskProps {
 
 const Task: React.FC<TaskProps> = ({ task, onDelete }) => {
     return (
-        <div className="Task">
+        <div className="task">
             <span>{task.id}. {task.text}</span>
             <button className="delete-btn" onClick={() => onDelete(task.id)}></button>
         </div>
