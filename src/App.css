@@ -3,6 +3,58 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  min-width: 700px;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.task {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  align-items: center;
+}
+
+.task-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+}
+
+.task-input-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+
+.delete-btn {
+  width: 50px;
+  height: 50px;
+  background: url("../public/trash.svg") no-repeat center;
+
+}
+
+.add-btn {
+  width: 50px;
+  height: 50px;
+  background: url("../public/add.svg") no-repeat center;
+  background-size: 100%;
 }
 
 .logo {
